@@ -1124,9 +1124,11 @@ def set_google_key():
 if __name__ == '__main__':
 
     port = int(os.getenv('PORT', 5000))
+    is_debug = os.getenv('FLASK_DEBUG', 'false').lower() in ('true', '1', 'yes')
     print("\n=======================================================")
     print(">> StudyMate AI - SDG 4 Quality Education Tutor")
     print(f">> Running on: http://127.0.0.1:{port}")
+    print(f">> Debug mode: {is_debug}")
     print("=======================================================\n")
-    app.run(host='0.0.0.0', port=port, debug=True)
+    app.run(host='0.0.0.0', port=port, debug=is_debug, use_reloader=False)
 
